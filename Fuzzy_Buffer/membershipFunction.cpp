@@ -24,15 +24,16 @@ float MembershipFunction::Fuzzify(float input)
 {
 	float output = 0;
 	m_buffer->Write(output);
+	return output;
 }
 
 float MembershipFunction::Defuzzify()
 {
+	return 0.0f;
 }
 
 bool MembershipFunction::Initialize()
 {
-	bool result;
 	m_buffer = new Buffer();
 	if(!m_buffer)
 	{

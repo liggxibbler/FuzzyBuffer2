@@ -22,6 +22,8 @@ float InferenceSystem::Evaluate(float input1, float input2)
 	lv = *iter;
 	lv->Fuzzify(input2);
 
+	m_ruleBase->Fire();
+
 	iter = m_output.begin();
 	lv = *iter;
 	output = lv->Defuzzify();

@@ -9,7 +9,7 @@ namespace Fuzzy
 	class RuleBase
 	{
 	public:
-		void Fire(float input*);
+		void Fire();
 
 	private:
 		std::list<Rule*> m_rules;

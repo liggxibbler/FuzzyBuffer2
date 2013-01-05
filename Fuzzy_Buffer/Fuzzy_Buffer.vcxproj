@@ -85,8 +85,10 @@
     <ClCompile Include="buffer.cpp" />
     <ClCompile Include="inferenceSystem.cpp" />
     <ClCompile Include="linguisticVariable.cpp" />
+    <ClCompile Include="main.cpp" />
     <ClCompile Include="membershipFunction.cpp" />
     <ClCompile Include="rule.cpp" />
+    <ClCompile Include="ruleBase.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

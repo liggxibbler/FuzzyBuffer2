@@ -18,4 +18,5 @@ void LinguisticVariable::Fuzzify(float input)
 
 float LinguisticVariable::Defuzzify()
 {
+	return 0.0f;
 }
