@@ -10,6 +10,7 @@ namespace Fuzzy
 	{
 	public:
 		void Fire();
+		bool AddRule(Buffer* i1, Buffer* i2, Buffer* o1);
 
 	private:
 		std::list<Rule*> m_rules;

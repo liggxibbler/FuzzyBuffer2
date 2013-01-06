@@ -22,14 +22,14 @@ Buffer* MembershipFunction::GetBuffer()
 
 float MembershipFunction::Fuzzify(float input)
 {
-	float output = 0;
+	float output = Evaluate(input);
 	m_buffer->Write(output);
 	return output;
 }
 
-float MembershipFunction::Defuzzify()
+float MembershipFunction::Peek(float input)
 {
-	return 0.0f;
+	return Evaluate(input);
 }
 
 bool MembershipFunction::Initialize()

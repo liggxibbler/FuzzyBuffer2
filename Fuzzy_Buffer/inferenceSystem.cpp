@@ -8,10 +8,12 @@ float InferenceSystem::Evaluate(float input1, float input2)
 	std::list<LinguisticVariable*>::iterator iter;
 	float output;
 
-	/*for(iter = m_input.begin(); iter != m_input.end(); iter++)
+	/*
+	int index = 0;
+	for(iter = m_input.begin(); iter != m_input.end(); iter++)
 	{
 		lv = *iter;
-		lv->Fuzzify(input[]);
+		lv->Fuzzify(input[index++]);
 	}*/
 
 	iter = m_input.begin();

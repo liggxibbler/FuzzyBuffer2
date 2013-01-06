@@ -12,6 +12,8 @@ namespace Fuzzy
 		Rule(const Rule&);
 		~Rule();
 
+		void SetBuffers(Buffer* i1, Buffer* i2, Buffer* o1);
+
 		bool Fire();
 
 	private:

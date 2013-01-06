@@ -13,14 +13,15 @@ namespace Fuzzy
 		MembershipFunction(const MembershipFunction& other);
 		~MembershipFunction();
 
-		virtual float Fuzzify(float input);
-		virtual float Defuzzify();
+		float Fuzzify(float input);
+		float Peek(float input);
 		bool Initialize();
 
 		Buffer* GetBuffer();
 		std::string GetID();
 
-	private:
+	protected:
+		virtual float Evaluate(float input) = 0;
 		std::string m_id;
 		Buffer* m_buffer;
 	};

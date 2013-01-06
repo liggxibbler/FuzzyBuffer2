@@ -20,3 +20,13 @@ float LinguisticVariable::Defuzzify()
 {
 	return 0.0f;
 }
+
+std::string LinguisticVariable::GetName()
+{
+	return m_name;
+}
+
+MembershipFunction* LinguisticVariable::GetMF(std::string name)
+{
+	return m_mapMF[name];
+}
