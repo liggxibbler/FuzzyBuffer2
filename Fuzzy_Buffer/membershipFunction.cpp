@@ -32,7 +32,7 @@ float MembershipFunction::Peek(float input)
 	return Evaluate(input);
 }
 
-bool MembershipFunction::Initialize()
+bool MembershipFunction::Initialize(float* params)
 {
 	m_buffer = new Buffer();
 	if(!m_buffer)

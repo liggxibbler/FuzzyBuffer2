@@ -15,12 +15,15 @@ namespace Fuzzy
 
 		float Fuzzify(float input);
 		float Peek(float input);
-		bool Initialize();
+		virtual bool Initialize(float* params);
+		virtual float Centroid() = 0;
 
 		Buffer* GetBuffer();
 		std::string GetID();
 
 	protected:
+		float m_minRange;
+		float m_maxRange;
 		virtual float Evaluate(float input) = 0;
 		std::string m_id;
 		Buffer* m_buffer;

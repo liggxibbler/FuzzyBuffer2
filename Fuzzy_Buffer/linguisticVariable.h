@@ -8,15 +8,25 @@
 
 namespace Fuzzy
 {
+	enum DEFUZZ_METHOD
+	{
+		DEFUZZ_METHOD_CENTROID,
+		DEFUZZ_METHOD_WEIGHTED_MF
+	};
+
 	class LinguisticVariable
 	{
 	public:
 		void Fuzzify(float input);
-		float Defuzzify();
-		//MembershipFunction* AddMF(type, params);
+		float Defuzzify(DEFUZZ_METHOD dm, int numPoints);
+		MembershipFunction* AddMF(float *params);
 
 		std::string GetName();
 		MembershipFunction* GetMF(std::string name);
+
+	private:
+		float Centroid(int numPoints);
+		float WeightedMF();
 
 	private:
 		std::map<std::string, MembershipFunction*> m_mapMF;

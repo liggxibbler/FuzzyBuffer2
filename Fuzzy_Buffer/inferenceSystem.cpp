@@ -28,7 +28,8 @@ float InferenceSystem::Evaluate(float input1, float input2)
 
 	iter = m_output.begin();
 	lv = *iter;
-	output = lv->Defuzzify();
+	
+	output = lv->Defuzzify(DEFUZZ_METHOD_WEIGHTED_MF, 0);
 
 	return output;
 }
