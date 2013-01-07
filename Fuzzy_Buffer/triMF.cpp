@@ -82,7 +82,7 @@ void TriMF::CalculateCentroid()
 	d2 = 6 * (m_mid - m_right);
 
 	n1 = 2*m3 - 3*m_left*m_mid*m_mid + l3;
-	n2 = 2*r3 - 3*m_mid*m_right*m_right + m3;
+	n2 = -r3 + 3*m_right*m_mid*m_mid - 2*m3;
 
 	result = 2 * (n1/d1 + n2/d2) / (m_right - m_left);
 
