@@ -2,6 +2,7 @@
 #define _FUZZY_LINGUISTICVARIABLE_H_
 
 #include "membershipFunction.h"
+#include "triMF.h"
 #include <list>
 #include <string>
 #include <map>
@@ -17,9 +18,14 @@ namespace Fuzzy
 	class LinguisticVariable
 	{
 	public:
+		LinguisticVariable();
+		LinguisticVariable(std::string name, float min, float max);
+		LinguisticVariable(const LinguisticVariable& other);
+		~LinguisticVariable();
+
 		void Fuzzify(float input);
 		float Defuzzify(DEFUZZ_METHOD dm, int numPoints);
-		MembershipFunction* AddMF(float *params);
+		MembershipFunction* AddTriMF(std::string name, float *params);
 
 		std::string GetName();
 		MembershipFunction* GetMF(std::string name);

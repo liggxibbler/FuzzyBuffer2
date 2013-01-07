@@ -7,6 +7,12 @@ MembershipFunction::MembershipFunction()
 	m_buffer = 0;
 }
 
+MembershipFunction::MembershipFunction(std::string name)
+{
+	m_buffer = 0;
+	m_name = name;
+}
+
 MembershipFunction::MembershipFunction(const MembershipFunction& other)
 {
 }

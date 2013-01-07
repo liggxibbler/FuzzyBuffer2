@@ -3,6 +3,7 @@
 
 #include "linguisticVariable.h"
 #include "ruleBase.h"
+#include "ruleDescriptor.h"
 #include <list>
 #include <map>
 
@@ -11,16 +12,21 @@ namespace Fuzzy
 	class InferenceSystem
 	{
 	public:
+		InferenceSystem();
+		InferenceSystem(const InferenceSystem& other);
+		~InferenceSystem();
 
-		float Evaluate(float input1, float input2);
+		float* Evaluate(float* input);
 
-		bool AddRule(std::string var1, std::string val1, std::string var2, std::string val2, std::string out, std::string valOut);
-		//bool AddRule(std::string* input, std::string* inputVal, std::string* output, std::string outputVal);
+		LinguisticVariable* AddInputLV(std::string name, float min, float max);
+		LinguisticVariable* AddOutputLV(std::string name, float min, float max);
+		bool AddRule(RuleDescriptor* ruleDesc, int ruleCount);
 
 	private:
 		std::map<std::string, LinguisticVariable*> m_mapVar;
 		std::list<LinguisticVariable*> m_input;
 		std::list<LinguisticVariable*> m_output;
+		float* m_outputArray;
 		RuleBase* m_ruleBase;
 	};
 }

@@ -2,6 +2,23 @@
 
 using namespace Fuzzy;
 
+LinguisticVariable::LinguisticVariable()
+{
+}
+LinguisticVariable::LinguisticVariable(std::string name, float min, float max)
+{
+	m_name = name;
+	m_minRange = min;
+	m_maxRange = max;
+}
+LinguisticVariable::LinguisticVariable(const LinguisticVariable& other)
+{
+}
+
+LinguisticVariable::~LinguisticVariable()
+{
+}
+
 void LinguisticVariable::Fuzzify(float input)
 {
 	MembershipFunction* mf;
@@ -23,7 +40,7 @@ float LinguisticVariable::Defuzzify(DEFUZZ_METHOD dm, int numPoints)
 		case DEFUZZ_METHOD_CENTROID:
 			return Centroid(numPoints);
 		case DEFUZZ_METHOD_WEIGHTED_MF:
-			return 0.0;
+			return WeightedMF();
 		default:
 			return 0.0;
 	}
@@ -67,4 +84,15 @@ float LinguisticVariable::WeightedMF()
 	}
 
 	return result;
+}
+
+MembershipFunction* LinguisticVariable::AddTriMF(std::string name, float* params)
+{
+	TriMF* mf = new TriMF(m_minRange, m_maxRange);
+	mf->Initialize(params);
+	
+	m_mapMF[name] = (MembershipFunction*)mf;
+	m_mf.push_back((MembershipFunction*)mf);
+
+	return mf;
 }

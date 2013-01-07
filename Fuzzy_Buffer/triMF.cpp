@@ -2,8 +2,28 @@
 
 using namespace Fuzzy;
 
+TriMF::TriMF(float min, float max)
+{
+	m_minRange = min;
+	m_maxRange = max;
+}
+
+TriMF::TriMF()
+{
+}
+
+TriMF::TriMF(const TriMF& other)
+{
+}
+
+TriMF::~TriMF()
+{
+}
+
 bool TriMF::Initialize(float* params)
 {
+	MembershipFunction::Initialize(params);
+
 	if(!params)
 	{
 		return false;
@@ -64,7 +84,8 @@ void TriMF::CalculateCentroid()
 	n1 = 2*m3 - 3*m_left*m_mid*m_mid + l3;
 	n2 = 2*r3 - 3*m_mid*m_right*m_right + m3;
 
-	result = n1/d1 + n2/d2;
+	result = 2 * (n1/d1 + n2/d2) / (m_right - m_left);
+
 	m_centroid = result;
 }
 

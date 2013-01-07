@@ -9,10 +9,17 @@ namespace Fuzzy
 	class RuleBase
 	{
 	public:
+		RuleBase();
+		RuleBase(int iSize, int oSize);
+		RuleBase(const RuleBase& other);
+		~RuleBase();
+
 		void Fire();
-		bool AddRule(Buffer* i1, Buffer* i2, Buffer* o1);
+		void AddRule(Rule* rule);
 
 	private:
+		int m_inputCount;
+		int m_outputCount;
 		std::list<Rule*> m_rules;
 	};
 }

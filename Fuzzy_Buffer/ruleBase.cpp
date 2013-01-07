@@ -2,6 +2,26 @@
 
 using namespace Fuzzy;
 
+RuleBase::RuleBase()
+{
+	m_inputCount = 0;
+	m_outputCount = 0;
+}
+
+RuleBase::RuleBase(int iSize, int oSize)
+{
+	m_inputCount = iSize;
+	m_outputCount = oSize;
+}
+
+RuleBase::RuleBase(const RuleBase& other)
+{
+}
+
+RuleBase::~RuleBase()
+{
+}
+
 void RuleBase::Fire()
 {
 	Rule* rule;
@@ -14,16 +34,7 @@ void RuleBase::Fire()
 	}
 }
 
-bool RuleBase::AddRule(Buffer* i1, Buffer* i2, Buffer* o1)
+void RuleBase::AddRule(Rule* rule)
 {
-	Rule* rule = new Rule;
-	if(!rule)
-	{
-		return false;
-	}
-	
-	rule->SetBuffers(i1, i2, o1);
 	m_rules.push_back(rule);
-	
-	return true;
 }

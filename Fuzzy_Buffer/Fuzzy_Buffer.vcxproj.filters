@@ -36,6 +36,12 @@
     <ClInclude Include="triMF.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="pairDescriptor.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ruleDescriptor.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="buffer.cpp">

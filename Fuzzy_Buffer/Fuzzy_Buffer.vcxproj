@@ -78,8 +78,10 @@
     <ClInclude Include="inferenceSystem.h" />
     <ClInclude Include="linguisticVariable.h" />
     <ClInclude Include="membershipFunction.h" />
+    <ClInclude Include="pairDescriptor.h" />
     <ClInclude Include="rule.h" />
     <ClInclude Include="ruleBase.h" />
+    <ClInclude Include="ruleDescriptor.h" />
     <ClInclude Include="triMF.h" />
   </ItemGroup>
   <ItemGroup>
