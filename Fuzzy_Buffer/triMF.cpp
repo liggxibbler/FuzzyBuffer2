@@ -41,7 +41,13 @@ bool TriMF::Initialize(float* params)
 float TriMF::Evaluate(float input)
 {
 	float m;
+	static float epsilon;
+	epsilon = (m_maxRange - m_minRange) / BIG_NUMBER;
 
+	if(input < m_minRange)
+	{
+		return Evaluate(m_minRange + epsilon);
+	}
 	if(input >= m_minRange && input < m_left)
 	{
 		return 0;
@@ -60,7 +66,11 @@ float TriMF::Evaluate(float input)
 	{
 		return 0;
 	}
-	
+	if(input > m_minRange)
+	{
+		return Evaluate(m_maxRange - epsilon);
+	}
+
 	return -1;
 }
 

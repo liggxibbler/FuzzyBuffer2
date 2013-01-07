@@ -59,13 +59,50 @@ MembershipFunction* LinguisticVariable::GetMF(std::string name)
 float LinguisticVariable::Centroid(int numPoints)
 {
 	MembershipFunction* mf;
+	float weight, value, result;
 	float numerator, denominator;
+	float dx = (m_maxRange - m_minRange) / (float)numPoints;
+	int i;
+
+	// setup for denominator integrant
+
+	float* integrant = new float[numPoints];
+	for(i=0; i<numPoints; i++)
+	{
+		integrant[i] = 0;
+	}
 
 	std::list<MembershipFunction*>::iterator iter;
 	for(iter = m_mf.begin(); iter !=m_mf.end(); iter++)
 	{
+		mf = *iter;
+		weight = mf->GetBuffer()->Read();
+
+		for(i=0; i<numPoints; i++)
+		{
+			value = mf->Peek(m_minRange + dx * i);
+			if(value * weight > integrant[i])
+			{
+				integrant[i] = value * weight;
+			}
+		}
 	}
-	return 0.0f;
+
+	// integrate m(x)
+	denominator = IntegrateTrapezoidal(integrant, numPoints, dx);
+
+	for(int i=0; i<numPoints; i++)
+	{
+		integrant[i] = (m_minRange + i*dx)*integrant[i];
+	}
+
+	numerator = IntegrateTrapezoidal(integrant, numPoints, dx);
+
+	result = numerator/denominator;
+
+	delete [] integrant;
+
+	return result;
 }
 
 float LinguisticVariable::WeightedMF()
@@ -106,4 +143,16 @@ void LinguisticVariable::ClearBuffers()
 		mf = *iter;
 		mf->GetBuffer()->Clear();
 	}
+}
+
+float LinguisticVariable::IntegrateTrapezoidal(float* integrant, int numPoints, float dx)
+{
+	float result = 0;
+
+	for(int i=0; i<numPoints - 1;i++)
+	{
+		result = result + .5* dx * (integrant[i] + integrant[i+1]);
+	}
+
+	return result;
 }

@@ -32,7 +32,7 @@ void Rule::SetBuffers(Buffer** input, Buffer** output)
 
 bool Rule::Fire()
 {
-	float result = 0;
+	float result = 1.0f;
 	float val;
 
 	for(int i=0; i<m_inputCount; i++)
@@ -42,7 +42,7 @@ bool Rule::Fire()
 			return false;
 		}
 		val = m_input[i]->Read();
-		result = val > result ? val : result;
+		result = val < result ? val : result; // fuzzy AND the outputs
 	}
 
 	for(int i=0; i<m_outputCount; i++)

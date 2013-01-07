@@ -51,7 +51,7 @@ float* InferenceSystem::Evaluate(float* input)
 	for(iter = m_output.begin(); iter != m_output.end(); iter++)
 	{
 		lv = *iter;
-		m_outputArray[index++] = lv->Defuzzify(DEFUZZ_METHOD_WEIGHTED_MF, 0);
+		m_outputArray[index++] = lv->Defuzzify(DEFUZZ_METHOD_CENTROID, 100);
 	}
 
 	return m_outputArray;

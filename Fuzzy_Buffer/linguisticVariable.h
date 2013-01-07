@@ -32,6 +32,7 @@ namespace Fuzzy
 		MembershipFunction* GetMF(std::string name);
 
 	private:
+		float IntegrateTrapezoidal(float* integrant, int numPoints, float dx);
 		float Centroid(int numPoints);
 		float WeightedMF();
 

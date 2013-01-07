@@ -15,7 +15,7 @@ int main()
 	lv1 = fis->AddInputLV("position", -1.0f, 1.0f);
 	params[0] = -2.0f; params[1] = -1.0f; params[2] = 0.0f;
 	lv1->AddTriMF("left", params);
-	params[0] = -0.5f; params[1] = 0.0f; params[2] = 0.5f;
+	params[0] = -0.1f; params[1] = 0.0f; params[2] = 0.1f;
 	lv1->AddTriMF("mid", params);
 	params[0] = 0.0f; params[1] = 1.0f; params[2] = 2.0f;
 	lv1->AddTriMF("right", params);
@@ -23,17 +23,17 @@ int main()
 	lv2 = fis->AddInputLV("velocity", -1.0f, 1.0f);
 	params[0] = -2.0f; params[1] = -1.0f; params[2] = 0.0f;
 	lv2->AddTriMF("left", params);
-	params[0] = -0.5f; params[1] = 0.0f; params[2] = 0.5f;
+	params[0] = -0.1f; params[1] = 0.0f; params[2] = 0.1f;
 	lv2->AddTriMF("slow", params);
 	params[0] = 0.0f; params[1] = 1.0f; params[2] = 2.0f;
 	lv2->AddTriMF("right", params);
 	
 	lv3 = fis->AddOutputLV("steer", -1.0f, 1.0f);
-	params[0] = -1.0f; params[1] = -.75f; params[2] = -.5f;
+	params[0] = -2.0f; params[1] = -1.0f; params[2] = 0.0f;
 	lv3->AddTriMF("left", params);
 	params[0] = -0.5f; params[1] = 0.0f; params[2] = 0.5f;
 	lv3->AddTriMF("center", params);
-	params[0] = 0.5f; params[1] = 0.75f; params[2] = 1.0f;
+	params[0] = 0.0f; params[1] = 1.0f; params[2] = 2.0f;
 	lv3->AddTriMF("right", params);
 	
 	rd[0].AddInPair("position", "left");
@@ -84,25 +84,31 @@ int main()
 	float input[2];
 	float temp;
 
-	cout << lv1->GetMF("left")->Centroid() << endl;
-	cout << lv1->GetMF("mid")->Centroid() << endl;
-	cout << lv1->GetMF("right")->Centroid() << endl;
+	/*for (int i=0; i< 200; i++)
+	{*/
+		//temp = -1.0 + (i/200.0f) * 2;
+		input[0] = -.99;//temp;
+		input[1] = 0.1;//temp;
+		cout << fis->Evaluate(input)[0] << endl;
+	//}
 
-	cout << lv2->GetMF("left")->Centroid() << endl;
-	cout << lv2->GetMF("slow")->Centroid() << endl;
-	cout << lv2->GetMF("right")->Centroid() << endl;
+	float dt = 0.01;
+	float force;
 
-	cout << lv3->GetMF("left")->Centroid() << endl;
-	cout << lv3->GetMF("center")->Centroid() << endl;
-	cout << lv3->GetMF("right")->Centroid() << endl;
+	input[0] = -.90;
+	input[1] = -.50;
 
-	for (int i=0; i< 20; i++)
+	cout << endl;
+
+	for(int i=0; i< 10000; i++)
 	{
-		temp = -1.0 + (i/20.0f) * 2;
-		input[0] = temp;
-		input[1] = temp;
-		cout << temp << ", " << fis->Evaluate(input)[0] << endl;
+		force = fis->Evaluate(input)[0];
+		//force = 2000 * force;
+		cout << input[0] << ", " << input[1] << ", " << force << endl;
+		input[1] = input[1] + force * dt;
+		input[0] = input[0] + input[1] * dt;
 	}
+
 
 	return 0;
 }
