@@ -4,6 +4,8 @@
 using namespace std;
 using namespace Fuzzy;
 
+void Print(float in);
+
 int main()
 {
 	InferenceSystem* fis;
@@ -95,8 +97,8 @@ int main()
 	float dt = 0.01;
 	float force;
 
-	input[0] = -.90;
-	input[1] = -.50;
+	input[0] = 0.5;
+	input[1] = 0.5;
 
 	cout << endl;
 
@@ -104,11 +106,22 @@ int main()
 	{
 		force = fis->Evaluate(input)[0];
 		//force = 2000 * force;
-		cout << input[0] << ", " << input[1] << ", " << force << endl;
+		//cout << input[0] << ", " << input[1] << ", " << force << endl;
+		Print(input[0]);
 		input[1] = input[1] + force * dt;
 		input[0] = input[0] + input[1] * dt;
 	}
-
+	cout << input[0] << ", " << input[1] << ", " << force << endl;
 
 	return 0;
+}
+
+void Print(float input)
+{
+	int space = (input + 2) * 20;
+	for(int i=0;i<space;i++)
+	{
+		cout << "-";
+	}
+	cout << "*" << endl;
 }
