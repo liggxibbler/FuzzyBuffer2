@@ -13,6 +13,7 @@ namespace Fuzzy
 		float Read();
 		void Max(float val);
 		void Write(float val);
+		void Clear();
 	private:
 		float m_value;
 	};

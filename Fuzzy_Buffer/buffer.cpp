@@ -14,6 +14,11 @@ Buffer::~Buffer()
 {
 }
 
+void Buffer::Clear()
+{
+	m_value = 0;
+}
+
 float Buffer::Read()
 {
 	return m_value;

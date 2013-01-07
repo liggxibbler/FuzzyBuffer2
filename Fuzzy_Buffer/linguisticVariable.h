@@ -23,6 +23,7 @@ namespace Fuzzy
 		LinguisticVariable(const LinguisticVariable& other);
 		~LinguisticVariable();
 
+		void ClearBuffers();
 		void Fuzzify(float input);
 		float Defuzzify(DEFUZZ_METHOD dm, int numPoints);
 		MembershipFunction* AddTriMF(std::string name, float *params);

@@ -22,11 +22,18 @@ float* InferenceSystem::Evaluate(float* input)
 	std::list<LinguisticVariable*>::iterator iter;
 	static float* output;
 
+	for(iter = m_output.begin(); iter != m_output.end(); iter++)
+	{
+		lv = *iter;
+		lv->ClearBuffers();
+	}
+
 	// Fuzzify input vars
 	int index = 0;
 	for(iter = m_input.begin(); iter != m_input.end(); iter++)
 	{
 		lv = *iter;
+		lv->ClearBuffers();
 		lv->Fuzzify(input[index++]);
 	}
 

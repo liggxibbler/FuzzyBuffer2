@@ -96,3 +96,14 @@ MembershipFunction* LinguisticVariable::AddTriMF(std::string name, float* params
 
 	return mf;
 }
+
+void LinguisticVariable::ClearBuffers()
+{
+	MembershipFunction* mf;
+	std::list<MembershipFunction*>::iterator iter;
+	for(iter=m_mf.begin(); iter!=m_mf.end(); iter++)
+	{
+		mf = *iter;
+		mf->GetBuffer()->Clear();
+	}
+}

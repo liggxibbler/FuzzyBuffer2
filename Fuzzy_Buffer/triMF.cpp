@@ -54,7 +54,7 @@ float TriMF::Evaluate(float input)
 	if(input >= m_mid && input < m_right)
 	{
 		m = (-1) / (m_right - m_mid); // slope of right side line segment
-		return m * (input - m_mid); // line equation
+		return 1 + m * (input - m_mid); // line equation
 	}
 	if(input >= m_right && input < m_maxRange)
 	{
