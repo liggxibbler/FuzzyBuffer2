@@ -71,6 +71,7 @@ void TriMF::CalculateCentroid()
 
 	float l3, m3, r3; // store the cubes
 	float d1, d2; // store denominators
+	//float n,d;
 	float n1, n2; // store numerators
 	float result;
 
@@ -83,8 +84,12 @@ void TriMF::CalculateCentroid()
 
 	n1 = 2*m3 - 3*m_left*m_mid*m_mid + l3;
 	n2 = -r3 + 3*m_right*m_mid*m_mid - 2*m3;
+	
+	//d = 6 * (m_mid - m_left) * (m_mid - m_right);
+	//n = m_right*m3 - m_left*m3 + m_mid*l3 - m_right*l3 - m_mid*r3;
 
 	result = 2 * (n1/d1 + n2/d2) / (m_right - m_left);
+	//result = n / d;
 
 	m_centroid = result;
 }

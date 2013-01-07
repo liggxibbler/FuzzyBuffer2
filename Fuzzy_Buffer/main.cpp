@@ -41,15 +41,45 @@ int main()
 	rd[0].AddOutPair("steer", "right");
 	fis->AddRule(&rd[0], 0);
 	
-	rd[1].AddInPair("position", "right");
-	rd[1].AddInPair("velocity", "right");
-	rd[1].AddOutPair("steer", "left");
+	rd[1].AddInPair("position", "left");
+	rd[1].AddInPair("velocity", "slow");
+	rd[1].AddOutPair("steer", "right");
 	fis->AddRule(&rd[1], 0);
 
-	rd[2].AddInPair("position", "mid");
-	rd[2].AddInPair("velocity", "slow");
+	rd[2].AddInPair("position", "left");
+	rd[2].AddInPair("velocity", "right");
 	rd[2].AddOutPair("steer", "center");
 	fis->AddRule(&rd[2], 0);
+
+	rd[3].AddInPair("position", "mid");
+	rd[3].AddInPair("velocity", "left");
+	rd[3].AddOutPair("steer", "right");
+	fis->AddRule(&rd[3], 0);
+	
+	rd[4].AddInPair("position", "mid");
+	rd[4].AddInPair("velocity", "slow");
+	rd[4].AddOutPair("steer", "center");
+	fis->AddRule(&rd[4], 0);
+
+	rd[5].AddInPair("position", "mid");
+	rd[5].AddInPair("velocity", "right");
+	rd[5].AddOutPair("steer", "left");
+	fis->AddRule(&rd[5], 0);
+
+	rd[6].AddInPair("position", "right");
+	rd[6].AddInPair("velocity", "left");
+	rd[6].AddOutPair("steer", "center");
+	fis->AddRule(&rd[6], 0);
+	
+	rd[7].AddInPair("position", "right");
+	rd[7].AddInPair("velocity", "slow");
+	rd[7].AddOutPair("steer", "left");
+	fis->AddRule(&rd[7], 0);
+
+	rd[8].AddInPair("position", "right");
+	rd[8].AddInPair("velocity", "right");
+	rd[8].AddOutPair("steer", "left");
+	fis->AddRule(&rd[8], 0);
 
 	float input[2];
 	float temp;
